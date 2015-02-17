@@ -1,0 +1,20 @@
+<%= erb :'partials/_header' %>
+  <h1>Edit or Delete <%= @student["name"] %></h1>
+  <p><form action="/squads/<%= @squad["squad_id"] %>/students" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" value="<%= @student["name"] %>">
+    <label for="age">Age: </label>
+    <input type="number" name="age" id="age" value="<%= @student["age"] %>">
+    <label for="age">Animal: </label>
+    <input type="text" name="animal" id="animal" value="<%= @student["animal"] %>">
+    <input type="submit" value="Change Info">
+    </form>
+  </p>
+  <p><form action="/squads/<%= @squad["squad_id"] %>/students" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete <%= @student["name"] %>">
+  </form>
+  </p>
+  <a href="/squads">Back</a>
+<%=erb :'partials/_footer'%>

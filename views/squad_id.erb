@@ -1,0 +1,10 @@
+<%= erb :'partials/_header' %>
+  <h1>Welcome to <%= @squad["name"] %></h1>
+    <p>
+      <b><%= @squad["name"] %></b> is a popular and well-respected squad that is going places. 
+    </p>
+    <p>
+    Formed in 2015, they are kicking ass and taking names. Their mascot is the mighty <b><%= @squad["mascot"] %></b>.
+    </p>
+    <a href="/squads">Back</a>
+<%=erb :'partials/_footer'%>

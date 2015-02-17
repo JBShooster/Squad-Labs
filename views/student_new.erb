@@ -1,0 +1,14 @@
+<%= erb :'partials/_header' %>
+<h1>Add a new student to <%= @squad["squad_id"] %>: <%= @squad["name"] %></h1>
+  <form action="/squads/:squad_id/students" method="POST">
+    <label>Name: </label>
+    <input type="text" name="name" id="name" autofocus>
+    <label>Age: </label>
+    <input type="number" name="age" id="age">
+    <label>Animal: </label>
+    <input type="text" name="animal" id="animal">
+    <input type="submit" value="Add!">
+    <input type="hidden" name="squad" id="squad_id" value="<%= @squad["squad_id"] %>">
+  </form>
+  <a href="/squads">Back</a>
+<%=erb :'partials/_footer'%>

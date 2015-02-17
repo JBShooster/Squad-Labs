@@ -1,0 +1,19 @@
+<%= erb :'partials/_header' %>
+  <h1>Edit or Delete <%= @squad["name"] %></h1>
+  <p><form action="/squads/<%= @squad["squad_id"] %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" value="<%= @squad["name"] %>">
+    <label for="mascot">Mascot: </label>
+    <input type="text" name="mascot" id="mascot" value="<%= @squad["mascot"] %>">
+    <input type="submit" value="Change Name">
+  </form>
+  </p>
+  <p><form action="/squads/<%= @squad["squad_id"] %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete <%= @squad["name"] %>">
+  </form>
+  </p>
+  <p><font color = "red">WARNING! Deleting a squad will also delete it's students!</font></p>
+  <a href="/squads">Back</a>
+<%=erb :'partials/_footer'%>
