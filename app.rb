@@ -56,6 +56,7 @@ get '/squads/:squad_id/students/new' do
   id = params[:squad_id].to_i
   squad = @conn.exec("SELECT * FROM squads_table WHERE squad_id = $1", [id])
   @squad = squad[0]
+  @squad_id = id
   erb :student_new
 end
 
@@ -77,12 +78,9 @@ end
 
 #GET STUDENT EDIT
 get '/squads/:squad_id/student_edit/:student_id' do
-  squad_id = params[:squad_id].to_i
-  student_id = params[:student_id].to_i
-  squad = @conn.exec("SELECT * FROM squads_table WHERE squad_id = $1", [squad_id])
-  student = @conn.exec("SELECT * FROM students_table WHERE student_id = $1", [student_id])
+  id = params[:student_id].to_i
+  student = @conn.exec("SELECT * FROM students_table WHERE student_id = $1", [id])
   @student = student[0]
-  @squad = squad[0]
   erb :student_edit
 end
 
@@ -95,8 +93,7 @@ end
 
 #POST NEW STUDENT
 post '/squads/:squad_id/students' do
-  squad_id = params[:squad_id].to_i
-  @conn.exec("INSERT INTO students_table (name, age, animal, squad) VALUES ($1, $2, $3, $4)", [params[:name], params[:age], params[:animal], squad_id])
+  @conn.exec("INSERT INTO students_table (name, age, animal, squad) VALUES ($1, $2, $3, $4)", [params[:name], params[:age], params[:animal], params[:squad]])
   redirect'/squads'
 end
 
